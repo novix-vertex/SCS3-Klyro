@@ -1,7 +1,8 @@
+import { useState } from "react";
 import TaskCard from "./TaskCard"
 
 const Board = () => {
-    const tasks = [
+    const [tasks, setTasks] = useState([
         {
             id: 1,
             title: "Build Login Page",
@@ -162,7 +163,7 @@ const Board = () => {
             dueDate: "2026-12-01",
             status: "ongoing"
         }
-    ];
+    ]);
     return (
         <main>
             <div className="board">
