@@ -174,9 +174,14 @@ const useTasks = () => {
         setTasks((prevTasks) => [...prevTasks, newTask]);
     };
 
+    const deleteTask = (taskId) => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId))
+    }
+
     return {
         tasks,
-        addTask
+        addTask,
+        deleteTask
     };
 };
 

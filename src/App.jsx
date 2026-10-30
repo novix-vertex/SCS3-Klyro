@@ -6,7 +6,7 @@ import useModal from "./hooks/useModel";
 
 const App = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const { tasks, addTask } = useTasks();
+  const { tasks, addTask, deleteTask } = useTasks();
 
   const handleAddTask = (formData) => {
     addTask(formData);
@@ -16,7 +16,10 @@ const App = () => {
   return (
     <div>
       <Header onAddTask={openModal} />
-      <Board tasks={tasks} />
+      <Board
+        tasks={tasks}
+        onDeleteTask={deleteTask}
+      />
       <TaskModal
         isModalOpen={isModalOpen}
         onModalClose={closeModal}

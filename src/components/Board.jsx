@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard"
 
-const Board = ({ tasks }) => {
+const Board = ({ tasks, onDeleteTask }) => {
     return (
         <main>
             <div className="board">
@@ -9,7 +9,7 @@ const Board = ({ tasks }) => {
                     {
                         tasks
                             .filter((task) => task.status === "todo")
-                            .map((task) => <TaskCard key={task.id} task={task} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
                     }
                 </section>
                 <section className="board-column">
@@ -17,7 +17,7 @@ const Board = ({ tasks }) => {
                     {
                         tasks
                             .filter((task) => task.status === "ongoing")
-                            .map((task) => <TaskCard key={task.id} task={task} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
                     }
                 </section>
                 <section className="board-column">
@@ -25,7 +25,7 @@ const Board = ({ tasks }) => {
                     {
                         tasks
                             .filter((task) => task.status === "completed")
-                            .map((task) => <TaskCard key={task.id} task={task} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
                     }
                 </section>
             </div>
