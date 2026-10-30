@@ -1,3 +1,4 @@
+import logo from "../assets/logo.png";
 const Header = ({
     onAddTask,
     searchText,
@@ -9,7 +10,10 @@ const Header = ({
 }) => {
     return (
         <header>
-            <h1>Klyro</h1>
+            <div className="header-logo-section">
+                <img src={logo} className="logo" alt="Klyro logo" />
+                <h1>Klyro</h1>
+            </div>
 
             <div className="header-actions">
                 <input
