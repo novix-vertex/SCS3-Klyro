@@ -7,15 +7,22 @@ import { useState } from "react";
 
 const App = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const { tasks, addTask, deleteTask, editTask, updateTaskStatus } = useTasks();
+  const { tasks,
+    addTask,
+    deleteTask,
+    editTask,
+    updateTaskStatus,
+    searchTasks } = useTasks();
 
   const [editingTask, setEditingTask] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all");
 
   const handleEditClick = (task) => {
     setEditingTask(task);
     openModal();
   };
-
   const handleTaskSubmit = (formData) => {
     if (editingTask) {
       editTask(editingTask.id, formData);
@@ -26,12 +33,29 @@ const App = () => {
     setEditingTask(null);
     closeModal();
   };
+  const filteredTasks = searchTasks(searchText.trim()).filter((task) => {
+    const matchesPriority =
+      priorityFilter === "all" || task.priority === priorityFilter;
+
+    const matchesStatus =
+      statusFilter === "all" || task.status === statusFilter;
+
+    return matchesPriority && matchesStatus;
+  });
 
   return (
     <div>
-      <Header onAddTask={openModal} />
+      <Header
+        onAddTask={openModal}
+        searchText={searchText}
+        onSearchChange={setSearchText}
+        priorityFilter={priorityFilter}
+        onPriorityChange={setPriorityFilter}
+        statusFilter={statusFilter}
+        onStatusChange={setStatusFilter}
+      />
       <Board
-        tasks={tasks}
+        tasks={filteredTasks}
         onDeleteTask={deleteTask}
         onEditTask={handleEditClick}
         onUpdateTaskStatus={updateTaskStatus}

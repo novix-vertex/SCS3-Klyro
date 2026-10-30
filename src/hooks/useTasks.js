@@ -198,12 +198,19 @@ const useTasks = () => {
         );
     };
 
+    const searchTasks = (searchText) => {
+        return tasks.filter((task) =>
+            task.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+    };
+
     return {
         tasks,
         addTask,
         deleteTask,
         editTask,
-        updateTaskStatus
+        updateTaskStatus,
+        searchTasks
     };
 };
 

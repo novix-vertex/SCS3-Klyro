@@ -9,7 +9,6 @@
   --color-modal-overlay: #00000080;
   --color-modal-background: #ffffff;
 
-  --color-primary: #3974c6;
   --color-border: #d5dfeb;
 
   --color-todo-text: #6983B4;
@@ -29,6 +28,8 @@
 
   --priority-high-background: #FEE2E2;
   --priority-high-text: #DC2626;
+
+  --color-gray: #868383;
 }
 
 * {
@@ -48,6 +49,10 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 header {
   height: 5rem;
   width: 100%;
@@ -64,7 +69,7 @@ header h1 {
 }
 
 header button {
-  background-color: var(--color-primary);
+  background-color: var(--color-text);
   color: white;
   border: none;
   padding: 0.75rem 1.25rem;
@@ -76,6 +81,39 @@ header button {
 
 header button:hover {
   opacity: 0.9;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-actions input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.header-actions input:focus {
+  border-color: var(--color-text);
+}
+
+.header-actions select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: white;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.header-actions select:focus {
+  border-color: var(--color-text);
 }
 
 .board {
@@ -127,6 +165,12 @@ header button:hover {
 
 .task-card p {
   font-size: 0.875rem;
+  color: var(--color-gray);
+}
+
+.task-due-date {
+  font-weight: bold;
+  padding-top: 1rem;
 }
 
 .task-card span {
@@ -158,20 +202,33 @@ header button:hover {
   gap: 0.5rem;
 }
 
+.task-card-top {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+
 .task-card-actions button {
   padding: 0.5rem 0.875rem;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: 0.375rem;
-  background-color: white;
-  color: var(--color-text);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
+  color: white;
 }
 
-.task-card-actions button:hover {
-  background-color: var(--color-header-background);
+.task-edit-btn {
+  background-color: var(--color-text);
+  opacity: 0.9;
 }
+.task-delete-btn {
+  background-color: var(--priority-high-text);
+  opacity: 0.9;
+}
+
 
 .todo-column {
   background-color: var(--color-todo-background);
@@ -273,7 +330,7 @@ header button:hover {
 .modal input:focus,
 .modal textarea:focus,
 .modal select:focus {
-  border-color: var(--color-primary);
+  border-color: var(--color-text);
 }
 
 .modal-actions {
@@ -298,8 +355,8 @@ header button:hover {
 }
 
 .modal-actions button[type="submit"] {
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  background-color: var(--color-text);
+  border: 1px solid var(--color-text);
   color: white;
 }
 
