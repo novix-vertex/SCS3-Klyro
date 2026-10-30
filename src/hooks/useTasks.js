@@ -178,10 +178,21 @@ const useTasks = () => {
         setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId))
     }
 
+    const editTask = (taskId, updatedData) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === taskId
+                    ? { ...task, ...updatedData }
+                    : task
+            )
+        );
+    };
+
     return {
         tasks,
         addTask,
-        deleteTask
+        deleteTask,
+        editTask
     };
 };
 

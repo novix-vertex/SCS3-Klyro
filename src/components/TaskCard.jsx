@@ -1,13 +1,26 @@
-const TaskCard = ({ task, onDeleteTask }) => {
+import { formatDate } from '../utils/dateUtil.js'
+const TaskCard = ({ task, onDeleteTask, onEditTask }) => {
     return (
         <div className="task-card">
             <h3>{task.title}</h3>
             <p>{task.description}</p>
             <span>{task.priority}</span>
-            <p>{task.dueDate}</p>
-            <button onClick={() => onDeleteTask(task.id)}>
-                Delete
-            </button>
+            <p>Due Date: {formatDate(task.dueDate)}</p>
+            <div className="task-card-actions">
+                <button
+                    type="button"
+                    onClick={() => onEditTask(task)}
+                >
+                    Edit
+                </button>
+
+                <button
+                    type="button"
+                    onClick={() => onDeleteTask(task.id)}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }

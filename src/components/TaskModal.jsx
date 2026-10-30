@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit }) => {
+const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
@@ -8,10 +8,29 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit }) => {
         dueDate: ""
     });
 
+    useEffect(() => {
+        if (editingTask) {
+            setFormData({
+                title: editingTask.title,
+                description: editingTask.description,
+                priority: editingTask.priority,
+                dueDate: editingTask.dueDate
+            });
+        } else {
+            setFormData({
+                title: "",
+                description: "",
+                priority: "Low",
+                dueDate: ""
+            });
+        }
+    }, [editingTask, isModalOpen]);
+
+
     if (!isModalOpen) {
         return null;
     }
-    console.log("modal called");
+
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -42,8 +61,7 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit }) => {
     return (
         <div className="modal-overlay">
             <div className="modal">
-                <h2>Add New Task</h2>
-                <form onSubmit={handleSubmit}>
+                <h2>{editingTask ? "Edit Task" : "Add New Task"}</h2>                <form onSubmit={handleSubmit}>
                     <div className="form-body">
                         <label>Task Title</label>
                         <input
@@ -83,14 +101,14 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit }) => {
                         />
                     </div>
                     <div className="modal-actions">
-  <button type="button" onClick={onModalClose}>
-    Cancel
-  </button>
+                        <button type="button" onClick={onModalClose}>
+                            Cancel
+                        </button>
 
-  <button type="submit">
-    Add Task
-  </button>
-</div>
+                        <button type="submit">
+                            {editingTask ? "Save Changes" : "Add Task"}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

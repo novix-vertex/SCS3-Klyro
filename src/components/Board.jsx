@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard"
 
-const Board = ({ tasks, onDeleteTask }) => {
+const Board = ({ tasks, onDeleteTask, onEditTask }) => {
     return (
         <main>
             <div className="board">
@@ -9,7 +9,7 @@ const Board = ({ tasks, onDeleteTask }) => {
                     {
                         tasks
                             .filter((task) => task.status === "todo")
-                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />)
                     }
                 </section>
                 <section className="board-column">
@@ -17,7 +17,7 @@ const Board = ({ tasks, onDeleteTask }) => {
                     {
                         tasks
                             .filter((task) => task.status === "ongoing")
-                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />)
                     }
                 </section>
                 <section className="board-column">
@@ -25,7 +25,7 @@ const Board = ({ tasks, onDeleteTask }) => {
                     {
                         tasks
                             .filter((task) => task.status === "completed")
-                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} />)
+                            .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />)
                     }
                 </section>
             </div>
