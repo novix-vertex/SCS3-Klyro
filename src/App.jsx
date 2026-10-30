@@ -1,8 +1,9 @@
+import Header from "./components/Header"
+
 const App = () => {
   return (
     <div>
-      <h1>Klyro</h1>
-      <p>Clarity in Every Move</p>
+      <Header />
     </div>
   )
 }

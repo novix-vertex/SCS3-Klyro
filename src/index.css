@@ -2,6 +2,8 @@
 :root {
   --color-background: #EEF3F9;
   --color-text: #5678b7;
+
+  --color-header-background: #dfeaf7;
 }
 
 * {
@@ -19,4 +21,14 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   font-family: Helvetica, sans-serif;
+}
+
+header {
+  height: 5rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-header-background);
+}
+header h1{
+  font-size: 1.5rem;
 }
