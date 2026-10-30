@@ -11,6 +11,24 @@
 
   --color-primary: #3974c6;
   --color-border: #d5dfeb;
+
+  --color-todo-text: #6983B4;
+  --color-todo-background: #CBDAF9;
+
+  --color-ongoing-text: #D0A276;
+  --color-ongoing-background: #F9E4CF;
+
+  --color-completed-text: #3A8D5D;
+  --color-completed-background: #C3F4E6;
+
+  --priority-low-background: #D1FAE5;
+  --priority-low-text: #15803D;
+
+  --priority-medium-background: #FEF3C7;
+  --priority-medium-text: #B45309;
+
+  --priority-high-background: #FEE2E2;
+  --priority-high-text: #DC2626;
 }
 
 * {
@@ -76,11 +94,21 @@ header button:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .board-column h2 {
   font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .task-card {
@@ -94,7 +122,7 @@ header button:hover {
 }
 
 .task-card h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .task-card p {
@@ -102,11 +130,26 @@ header button:hover {
 }
 
 .task-card span {
-  background-color: var(--color-header-background);
-  color: var(--color-text);
   width: fit-content;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.priority-low {
+  background-color: var(--priority-low-background);
+  color: var(--priority-low-text);
+}
+
+.priority-medium {
+  background-color: var(--priority-medium-background);
+  color: var(--priority-medium-text);
+}
+
+.priority-high {
+  background-color: var(--priority-high-background);
+  color: var(--priority-high-text);
 }
 
 .task-card-actions {
@@ -128,6 +171,33 @@ header button:hover {
 
 .task-card-actions button:hover {
   background-color: var(--color-header-background);
+}
+
+.todo-column {
+  background-color: var(--color-todo-background);
+  color: var(--color-todo-text);
+}
+
+.ongoing-column {
+  background-color: var(--color-ongoing-background);
+  color: var(--color-ongoing-text);
+}
+
+.completed-column {
+  background-color: var(--color-completed-background);
+  color: var(--color-completed-text);
+}
+
+.todo-column h2 {
+  color: var(--color-todo-text);
+}
+
+.ongoing-column h2 {
+  color: var(--color-ongoing-text);
+}
+
+.completed-column h2 {
+  color: var(--color-completed-text);
 }
 
 .modal-overlay {

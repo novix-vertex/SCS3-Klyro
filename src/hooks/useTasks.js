@@ -188,11 +188,22 @@ const useTasks = () => {
         );
     };
 
+    const updateTaskStatus = (taskId, newStatus) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === taskId
+                    ? { ...task, status: newStatus }
+                    : task
+            )
+        );
+    };
+
     return {
         tasks,
         addTask,
         deleteTask,
-        editTask
+        editTask,
+        updateTaskStatus
     };
 };
 

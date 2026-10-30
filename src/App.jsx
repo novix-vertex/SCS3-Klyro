@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const App = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const { tasks, addTask, deleteTask, editTask } = useTasks();
+  const { tasks, addTask, deleteTask, editTask, updateTaskStatus } = useTasks();
 
   const [editingTask, setEditingTask] = useState(null);
 
@@ -34,6 +34,7 @@ const App = () => {
         tasks={tasks}
         onDeleteTask={deleteTask}
         onEditTask={handleEditClick}
+        onUpdateTaskStatus={updateTaskStatus}
       />
       <TaskModal
         isModalOpen={isModalOpen}
