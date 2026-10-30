@@ -53,6 +53,11 @@ body {
   display: none;
 }
 
+main {
+  width: 100%;
+  min-width: 0;
+}
+
 header {
   height: 5rem;
   width: 100%;
@@ -117,13 +122,15 @@ header button:hover {
 }
 
 .board {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   padding: 1rem;
 }
 
 .board-column {
-  flex: 1;
+  min-width: 0;
+  width: 100%;
   padding: 1rem;
   border-radius: 0.5rem;
   height: calc(100vh - 7rem);
@@ -385,4 +392,75 @@ header button:hover {
 
 .modal-actions button:hover {
   opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  header {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+
+  .board-column {
+    height: 70vh;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .header-actions input {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .header-actions select,
+  .header-actions button {
+    width: 100%;
+  }
+
+  .header-actions button {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 90%;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .modal form {
+    gap: 1rem;
+  }
+
+  .modal-actions {
+    flex-wrap: wrap;
+  }
+
+  .modal-actions button {
+    flex: 1;
+  }
 }
