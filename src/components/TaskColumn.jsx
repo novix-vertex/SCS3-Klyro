@@ -1,6 +1,9 @@
 import TaskCard from "./TaskCard";
 
 const TaskColumn = ({ tasks, onDeleteTask, onEditTask, handleTaskStatus, status, columnTitle }) => {
+
+    const filteredTasks = tasks.filter((task) => task.status === status);
+
     return (
         <section
             className={`board-column ${status}-column`}
@@ -11,11 +14,18 @@ const TaskColumn = ({ tasks, onDeleteTask, onEditTask, handleTaskStatus, status,
         >
             <h2>{columnTitle}</h2>
             <div className="task-list">
-                {
-                    tasks
-                        .filter((task) => task.status === status)
-                        .map((task) => <TaskCard key={task.id} task={task} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />)
-                }
+                {filteredTasks.length === 0 ? (
+                    <p className="empty-message">No tasks here yet</p>
+                ) : (
+                    filteredTasks.map((task) => (
+                        <TaskCard
+                            key={task.id}
+                            task={task}
+                            onDeleteTask={onDeleteTask}
+                            onEditTask={onEditTask}
+                        />
+                    ))
+                )}
             </div>
         </section>
     )

@@ -224,12 +224,11 @@ header button:hover {
   background-color: var(--color-text);
   opacity: 0.9;
 }
+
 .task-delete-btn {
   background-color: var(--priority-high-text);
   opacity: 0.9;
 }
-
-
 .todo-column {
   background-color: var(--color-todo-background);
   color: var(--color-todo-text);
@@ -255,6 +254,17 @@ header button:hover {
 
 .completed-column h2 {
   color: var(--color-completed-text);
+}
+
+.empty-message {
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.7;
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-overlay {
