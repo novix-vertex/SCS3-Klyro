@@ -48,8 +48,38 @@ header h1 {
   border-radius: 0.5rem;
   height: 100%;
   background-color: var(--color-header-background);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .board-column h2 {
   font-size: 1.125rem;
+}
+
+.task-card {
+  background-color: var(--color-background);
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-card h3 {
+  font-size: 1rem;
+}
+
+.task-card p {
+  font-size: 0.875rem;
+}
+
+.task-card span {
+  background-color: var(--color-header-background);
+  color: var(--color-text);
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
