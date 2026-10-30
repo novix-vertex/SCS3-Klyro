@@ -43,8 +43,7 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!formData.title.trim()) {
-            alert("Please enter a task title");
+        if (!formData.title.trim() || !formData.description.trim()) {
             return;
         }
 
@@ -61,7 +60,8 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => 
     return (
         <div className="modal-overlay">
             <div className="modal">
-                <h2>{editingTask ? "Edit Task" : "Add New Task"}</h2>                <form onSubmit={handleSubmit}>
+                <h2>{editingTask ? "Edit Task" : "Add New Task"}</h2>
+                <form onSubmit={handleSubmit}>
                     <div className="form-body">
                         <label>Task Title</label>
                         <input
@@ -70,6 +70,7 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => 
                             placeholder="Enter task title"
                             value={formData.title}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div>
@@ -78,14 +79,16 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => 
                             placeholder="Enter task description"
                             name="description"
                             value={formData.description}
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                            required />
                     </div>
                     <div>
                         <label>Priority</label>
                         <select
                             name="priority"
                             value={formData.priority}
-                            onChange={handleChange}>
+                            onChange={handleChange}
+                            required>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
@@ -98,6 +101,7 @@ const TaskModal = ({ isModalOpen, onModalClose, onTaskSubmit, editingTask }) => 
                             name="dueDate"
                             value={formData.dueDate}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="modal-actions">

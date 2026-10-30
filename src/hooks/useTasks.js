@@ -5,7 +5,11 @@ const useTasks = () => {
         const savedTasks = localStorage.getItem("klyro-tasks");
 
         if (savedTasks) {
-            return JSON.parse(savedTasks);
+            const parsedTasks = JSON.parse(savedTasks);
+
+            if (parsedTasks.length > 0) {
+                return parsedTasks;
+            }
         }
 
         return [];

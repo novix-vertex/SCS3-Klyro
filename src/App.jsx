@@ -7,12 +7,13 @@ import { useState } from "react";
 
 const App = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
-  const { tasks,
+  const {
     addTask,
     deleteTask,
     editTask,
     updateTaskStatus,
-    searchTasks } = useTasks();
+    searchTasks
+  } = useTasks();
 
   const [editingTask, setEditingTask] = useState(null);
   const [searchText, setSearchText] = useState("");
@@ -30,6 +31,11 @@ const App = () => {
       addTask(formData);
     }
 
+    setEditingTask(null);
+    closeModal();
+  };
+
+  const handleModalClose = () => {
     setEditingTask(null);
     closeModal();
   };
@@ -62,7 +68,7 @@ const App = () => {
       />
       <TaskModal
         isModalOpen={isModalOpen}
-        onModalClose={closeModal}
+        onModalClose={handleModalClose}
         onTaskSubmit={handleTaskSubmit}
         editingTask={editingTask}
       />
