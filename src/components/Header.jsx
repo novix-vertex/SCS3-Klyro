@@ -1,8 +1,8 @@
-const Header = () => {
+const Header = ({ onAddTask }) => {
     return (
         <header>
             <h1>Klyro</h1>
-            <p>Clarity in every move</p>
+            <button onClick={onAddTask}>+ Add Task</button>
         </header>
     )
 }
