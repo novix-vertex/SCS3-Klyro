@@ -1,6 +1,6 @@
 import TaskColumn from "./TaskColumn";
 
-const Board = ({ tasks, onDeleteTask, onEditTask, onUpdateTaskStatus }) => {
+const Board = ({ tasks, onDeleteTask, onEditTask, onUpdateTaskStatus, hasActiveFilters }) => {
     const handleTaskStatus = (e, newStatus) => {
         const taskId = Number(e.dataTransfer.getData("taskId"))
         onUpdateTaskStatus(taskId, newStatus);
@@ -9,9 +9,30 @@ const Board = ({ tasks, onDeleteTask, onEditTask, onUpdateTaskStatus }) => {
     return (
         <main>
             <div className="board">
-                <TaskColumn tasks={tasks} onDeleteTask={onDeleteTask} onEditTask={onEditTask} handleTaskStatus={handleTaskStatus} status="todo" columnTitle="To Do" />
-                <TaskColumn tasks={tasks} onDeleteTask={onDeleteTask} onEditTask={onEditTask} handleTaskStatus={handleTaskStatus} status="ongoing" columnTitle="In Progress" />
-                <TaskColumn tasks={tasks} onDeleteTask={onDeleteTask} onEditTask={onEditTask} handleTaskStatus={handleTaskStatus} status="completed" columnTitle="Done" />
+                <TaskColumn
+                    tasks={tasks}
+                    onDeleteTask={onDeleteTask}
+                    onEditTask={onEditTask}
+                    handleTaskStatus={handleTaskStatus}
+                    hasActiveFilters={hasActiveFilters}
+                    status="todo"
+                    columnTitle="To Do" />
+                <TaskColumn
+                    tasks={tasks}
+                    onDeleteTask={onDeleteTask}
+                    onEditTask={onEditTask}
+                    handleTaskStatus={handleTaskStatus}
+                    hasActiveFilters={hasActiveFilters}
+                    status="ongoing"
+                    columnTitle="In Progress" />
+                <TaskColumn
+                    tasks={tasks}
+                    onDeleteTask={onDeleteTask}
+                    onEditTask={onEditTask}
+                    handleTaskStatus={handleTaskStatus}
+                    hasActiveFilters={hasActiveFilters}
+                    status="completed"
+                    columnTitle="Done" />
             </div>
         </main >
     )

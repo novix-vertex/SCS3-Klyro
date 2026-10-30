@@ -49,6 +49,8 @@ const App = () => {
     return matchesPriority && matchesStatus;
   });
 
+  const hasActiveFilters = searchText.trim() !== "" || priorityFilter !== "all" || statusFilter !== "all";
+
   return (
     <div>
       <Header
@@ -65,6 +67,7 @@ const App = () => {
         onDeleteTask={deleteTask}
         onEditTask={handleEditClick}
         onUpdateTaskStatus={updateTaskStatus}
+        hasActiveFilters={hasActiveFilters}
       />
       <TaskModal
         isModalOpen={isModalOpen}

@@ -1,6 +1,13 @@
 import TaskCard from "./TaskCard";
 
-const TaskColumn = ({ tasks, onDeleteTask, onEditTask, handleTaskStatus, status, columnTitle }) => {
+const TaskColumn = ({
+    tasks,
+    onDeleteTask,
+    onEditTask,
+    handleTaskStatus,
+    status,
+    columnTitle,
+    hasActiveFilters }) => {
 
     const filteredTasks = tasks.filter((task) => task.status === status);
 
@@ -15,7 +22,11 @@ const TaskColumn = ({ tasks, onDeleteTask, onEditTask, handleTaskStatus, status,
             <h2>{columnTitle}</h2>
             <div className="task-list">
                 {filteredTasks.length === 0 ? (
-                    <p className="empty-message">No tasks here yet</p>
+                    <p className="empty-message">
+                        {hasActiveFilters
+                            ? "No matching tasks"
+                            : "No tasks here yet"}
+                    </p>
                 ) : (
                     filteredTasks.map((task) => (
                         <TaskCard
