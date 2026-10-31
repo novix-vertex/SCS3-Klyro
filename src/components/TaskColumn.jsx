@@ -21,7 +21,8 @@ const TaskColumn = ({
         >
             <h2>
                 {columnTitle} ({filteredTasks.length})
-            </h2>            <div className="task-list">
+            </h2>
+            <div className="task-list">
                 {filteredTasks.length === 0 ? (
                     <p className="empty-message">
                         {hasActiveFilters
