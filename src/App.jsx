@@ -4,6 +4,7 @@ import TaskModal from "./components/TaskModal";
 import useTasks from "./hooks/useTasks";
 import useModal from "./hooks/useModel";
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
@@ -75,6 +76,7 @@ const App = () => {
         onTaskSubmit={handleTaskSubmit}
         editingTask={editingTask}
       />
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   )
 }

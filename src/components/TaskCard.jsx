@@ -1,5 +1,19 @@
 import { formatDate } from '../utils/dateUtil.js'
+import toast from "react-hot-toast"
 const TaskCard = ({ task, onDeleteTask, onEditTask }) => {
+
+    const handleDelete = () => {
+        const confirmDelete = window.confirm(
+            "Are you sure you want to delete this task?"
+        );
+
+        if (!confirmDelete) {
+            return;
+        }
+
+        onDeleteTask(task.id);
+        toast.success("Task deleted successfully!");
+    };
     return (
         <div
             className="task-card"
@@ -24,7 +38,7 @@ const TaskCard = ({ task, onDeleteTask, onEditTask }) => {
                     <button
                         className="task-delete-btn"
                         type="button"
-                        onClick={() => onDeleteTask(task.id)}
+                        onClick={handleDelete}
                     >
                         Delete
                     </button>
