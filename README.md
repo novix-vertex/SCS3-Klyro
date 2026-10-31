@@ -40,6 +40,7 @@ description, priority, and due date.
 -   Edit an existing task using the same form used to add tasks.
 -   Delete a task after confirming the action.
 -   Move tasks between columns using drag and drop.
+-   Uses Nano ID to generate unique IDs for each task.
 
 ### Search and filters
 
@@ -81,6 +82,9 @@ Provides the development server and creates the production build.
 
 ### React Hot Toast
 Displays success and error notifications.
+
+### Nano ID
+Generates unique IDs for tasks to help identify and manage them.
 
 ### LocalStorage
 Saves tasks in the browser so they remain available after refreshing the page.

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
 
 const useTasks = () => {
     const [tasks, setTasks] = useState(() => {
@@ -20,7 +21,7 @@ const useTasks = () => {
 
     const addTask = (formData) => {
         const newTask = {
-            id: Date.now(),
+            id: nanoid(),
             ...formData,
             status: "todo"
         };

@@ -9,7 +9,7 @@ const Board = ({ tasks, onDeleteTask, onEditTask, onUpdateTaskStatus, hasActiveF
     ];
 
     const handleTaskStatus = (e, newStatus) => {
-        const taskId = Number(e.dataTransfer.getData("taskId"))
+        const taskId = e.dataTransfer.getData("taskId");
         onUpdateTaskStatus(taskId, newStatus);
     }
 
