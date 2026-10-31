@@ -1,8 +1,10 @@
 import Board from "./components/Board"
 import Header from "./components/Header"
 import TaskModal from "./components/TaskModal";
+
 import useTasks from "./hooks/useTasks";
 import useModal from "./hooks/useModel";
+
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 
@@ -25,6 +27,12 @@ const App = () => {
     setEditingTask(task);
     openModal();
   };
+
+  const handleModalClose = () => {
+    setEditingTask(null);
+    closeModal();
+  };
+
   const handleTaskSubmit = (formData) => {
     if (editingTask) {
       editTask(editingTask.id, formData);
@@ -32,14 +40,10 @@ const App = () => {
       addTask(formData);
     }
 
-    setEditingTask(null);
-    closeModal();
+    handleModalClose();
   };
 
-  const handleModalClose = () => {
-    setEditingTask(null);
-    closeModal();
-  };
+
   const filteredTasks = searchTasks(searchText.trim()).filter((task) => {
     const matchesPriority =
       priorityFilter === "all" || task.priority === priorityFilter;
